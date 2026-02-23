@@ -57,27 +57,43 @@ This website features a modern design with:
 SIMG_W_Website/
 ├── public/
 │   ├── images/
-│   │   └── website/          # Site images and assets
+│   │   ├── events/           # Auto-generated event thumbnails (SVG/PNG)
+│   │   ├── members/          # Team member photos
+│   │   ├── research/         # Research project images
+│   │   └── website/          # Site logos and assets
 │   └── favicon.svg
+├── scripts/
+│   ├── create-event.mjs      # CLI tool to create new events
+│   └── generate-thumbnail.mjs # Thumbnail generator (Nano Banana / SVG fallback)
+├── .github/
+│   └── workflows/
+│       └── create-event.yml  # CI/CD: create events via GitHub Actions
 ├── src/
 │   ├── components/
 │   │   ├── Header.astro      # Navigation with theme toggle
+│   │   ├── EventCard.astro   # Reusable event card with share/calendar/resources
+│   │   ├── Footer.astro
 │   │   └── SponsorCarousel.astro
 │   ├── content/
-│   │   ├── config.ts         # Content Collections config
-│   │   ├── members/          # Team member profiles
+│   │   ├── config.ts         # Content Collections config (members, blog, research, events)
+│   │   ├── events/           # 📅 Event content (en/es)
+│   │   │   ├── en/           # English event markdown files
+│   │   │   └── es/           # Spanish event markdown files
+│   │   ├── members/          # Team member profiles (en/es)
 │   │   ├── research/         # Research projects (en/es)
-│   │   └── blog/             # Blog posts
+│   │   └── blog/             # Blog posts (en/es)
 │   ├── layouts/
 │   │   └── Layout.astro      # Base layout with FOUC prevention
 │   ├── pages/
-│   │   ├── en/               # English pages
+│   │   ├── en/
 │   │   │   ├── index.astro
 │   │   │   ├── about.astro
+│   │   │   ├── events.astro   # 📅 Unified Events page (EN)
 │   │   │   ├── research.astro
 │   │   │   ├── members.astro
 │   │   │   └── contact.astro
-│   │   ├── es/               # Spanish pages
+│   │   ├── es/
+│   │   │   ├── events.astro   # 📅 Unified Events page (ES)
 │   │   │   └── ...
 │   │   └── index.astro       # Language redirect
 │   └── styles/
@@ -94,13 +110,15 @@ SIMG_W_Website/
 
 Run from the project root:
 
-| Command                | Action                                              |
-| :--------------------- | :-------------------------------------------------- |
-| `npm install`          | Install dependencies                                |
-| `npm run dev`          | Start dev server at `localhost:4321`                |
-| `npm run build`        | Build production site to `./dist/`                  |
-| `npm run preview`      | Preview build locally before deploying              |
-| `npm run astro ...`    | Run Astro CLI commands                              |
+| Command                       | Action                                              |
+| :---------------------------- | :-------------------------------------------------- |
+| `bun install`                 | Install dependencies                                |
+| `bun run dev`                 | Start dev server at `localhost:4321`                |
+| `bun run build`               | Build production site to `./dist/`                  |
+| `bun run preview`             | Preview build locally before deploying              |
+| `bun run astro ...`           | Run Astro CLI commands                              |
+| `bun run new-event`           | 📅 Interactive CLI to create a new event            |
+| `bun run generate-thumbnails` | 🎨 Generate thumbnails for all events               |
 
 ---
 
@@ -144,24 +162,32 @@ Run from the project root:
 - Interactive Google Maps integration showing Building 404 - Yu Takeuchi location
 - Social media links
 
-### 6. **Session Recordings** (`/sessions/recordings`)
+### 6. **Events** (`/events`) — *Unified Events Page*
 
-- **YouTube Video Integration** powered by [YouTube Data API v3](https://developers.google.com/youtube/v3)
-  - Automatically fetches the latest 3 videos from the SIMG YouTube channel
-  - Displays high-quality video thumbnails
-  - Shows video duration and publication date
-  - Click-to-play functionality with hover effects
-  - Styled with Van Gogh color palette (yellow/blue gradients)
-  - Free tier: 10,000 quota units/day (sufficient for ~100 video fetches)
-- Direct links to full YouTube channel
-- Subscribe call-to-action section
+The Events page replaces the old separate `in-person.astro` and `recordings.astro` pages, merging all session content into a single, feature-rich page.
 
-**Video Display Features**:
-- Grid layout (3 columns on desktop, responsive on mobile)
-- Glassmorphism effects with dark backgrounds
-- Yellow play button overlay (#F4C542)
-- Animated hover states with scaling effects
-- Error handling with fallback to direct YouTube links
+- **Hero Section** with Google Maps embed (Building 404 Yu Takeuchi)
+  - Recurring Google Calendar link (every Friday 2–4 PM COT)
+  - Get Directions button
+  - Location details with room number
+- **Upcoming Events** grid (auto-filtered by `status: upcoming`, **limited to 3 most recent**)
+- **Past Events** grid (auto-filtered by `status: completed`, **limited to 3 latest**)
+- **YouTube Recordings** section (fetches latest **3 videos** via YouTube Data API v3)
+- **Session Guidelines** cards (open to all, bring laptop, Python basics, ask questions)
+
+**📊 Event Display Limits**: All sections consistently show **maximum 3 items** for clean grid layout.
+
+**Event Cards** (`EventCard.astro`) feature:
+- Thumbnail display (16:9 ratio) with lazy loading
+- Event type badges: 🔵 In-Person, 🟢 Virtual, 🟡 Hybrid
+- Status badges: 🟡 Upcoming, 🔴 Live (pulsing), ⚪ Completed
+- Google Calendar URL auto-generation from event date/time/location
+- Share buttons: WhatsApp, LinkedIn, Copy Link (clipboard API)
+- Resource links, recording link, meeting link
+- Light/Dark mode support
+- Duration badge
+
+**Grid Layout**: Up to 3 cards per row on desktop, 1 column on mobile
 
 #### EmailJS Configuration
 
@@ -206,7 +232,327 @@ These values are configured in both `/en/sessions/recordings.astro` and `/es/ses
 
 ---
 
-## 🎯 Key Features
+## 📅 Events System
+
+The Events system is the core feature for managing SIMG session content. It uses Astro Content Collections with a comprehensive Zod schema to validate event data.
+
+### How to Add an Event
+
+There are **3 ways** to create a new event:
+
+#### Option 1: Interactive CLI (Recommended)
+
+```bash
+bun run new-event
+```
+
+This launches an interactive prompt that asks for:
+- Title (EN + ES), description, date, time, speaker
+- Event type (in-person / virtual / hybrid)
+- Location details, meeting links, tags
+- Body content in markdown
+- Optional thumbnail generation
+
+It automatically creates both EN and ES markdown files.
+
+#### Option 2: Manual Markdown
+
+Create a new `.md` file in both `src/content/events/en/` and `src/content/events/es/`:
+
+```markdown
+---
+title: "Your Event Title"
+description: "Short description of the event"
+date: 2026-04-01
+time: "2:00 PM - 4:00 PM"
+speaker: "SIMG Research Group"
+eventType: "in-person"
+location: "Universidad Nacional de Colombia, Bogotá"
+building: "404 - Yu Takeuchi"
+room: "202-405"
+meetingLink: ""
+meetingPlatform: ""
+googleCalendarLink: ""
+recurrent: false
+thumbnail: "/images/events/your-event-slug.svg"
+banner: ""
+resources: []
+recordingUrl: ""
+tags: ["AI", "Research"]
+status: "upcoming"
+lang: "en"
+translationKey: "your-event-slug"
+participants: []
+duration: "1h 30m"
+---
+
+Your event description in markdown format here.
+```
+
+Then generate the thumbnail:
+```bash
+node scripts/generate-thumbnail.mjs --title "Your Event Title" --date "2026-04-01" --type "in-person"
+```
+
+#### Option 3: GitHub Actions (CI/CD)
+
+Go to **Actions** → **Create Event** → **Run workflow** and fill in the form fields. This automatically:
+1. Creates EN + ES markdown files
+2. Generates a thumbnail
+3. Opens a Pull Request with the new event
+
+### Event Schema Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `title` | string | ✅ | Event title |
+| `description` | string | ✅ | Short description |
+| `date` | date | ✅ | Event date |
+| `time` | string | ✅ | Time range (e.g., "2:00 PM - 4:00 PM") |
+| `speaker` | string | ✅ | Speaker or group name |
+| `eventType` | enum | ✅ | `in-person`, `virtual`, or `hybrid` |
+| `location` | string | ❌ | Venue name |
+| `building` | string | ❌ | Building name/number |
+| `room` | string | ❌ | Room number |
+| `meetingLink` | string | ❌ | URL for virtual events |
+| `meetingPlatform` | string | ❌ | Platform name (Google Meet, Zoom, etc.) |
+| `thumbnail` | string | ❌ | Path to thumbnail image |
+| `resources` | array | ❌ | Array of `{ title, url, type }` objects |
+| `recordingUrl` | string | ❌ | YouTube/recording URL |
+| `tags` | string[] | ❌ | Topic tags |
+| `status` | enum | ✅ | `upcoming`, `live`, `completed`, or `cancelled` |
+| `lang` | string | ✅ | `en` or `es` |
+| `translationKey` | string | ✅ | Matches EN/ES counterparts |
+| `duration` | string | ❌ | Duration text (e.g., "1h 30m") |
+
+### Thumbnail Generation
+
+The thumbnail generator (`scripts/generate-thumbnail.mjs`) supports two modes:
+
+1. **AI Generation** (Nano Banana): If `BANANA_API_KEY` and `BANANA_MODEL_KEY` environment variables are set, it generates AI-powered thumbnails via Banana.dev
+2. **SVG Fallback**: Creates branded SVG thumbnails with SIMG colors (Yellow #F4C542 + Blue #2E6DB4), event title, date, type badge, and turtle icon
+
+```bash
+# Generate for a single event
+node scripts/generate-thumbnail.mjs --title "GPU Programming" --date "2026-02-27" --type "in-person"
+
+# Generate for all events
+bun run generate-thumbnails
+```
+
+### Updating Event Status
+
+To mark an event as completed (e.g., after the session):
+1. Open the event's `.md` file (both EN and ES)
+2. Change `status: "upcoming"` to `status: "completed"`
+3. Optionally add `recordingUrl: "https://youtube.com/watch?v=..."` with the recording link
+
+---
+
+## 🧪 Testing & Debugging
+
+The project includes several testing scripts to verify that all components are working correctly.
+
+### YouTube Integration Testing
+
+**Test YouTube API and Channel Connection:**
+```bash
+# Test if YouTube API can fetch videos from your channel
+node scripts/test-youtube.mjs
+```
+
+**Expected Output:**
+- ✅ Environment variables loaded correctly
+- ✅ API key validation successful  
+- ✅ Channel found with video count
+- ✅ Video list with titles, dates, and durations
+
+**Common Issues:**
+- `❌ API Key Error: API key not valid` → Check your `PUBLIC_YOUTUBE_API_KEY`
+- `❌ No videos found` → Channel may be private or have no public videos
+- `❌ Channel ID Error` → Verify `PUBLIC_YOUTUBE_CHANNEL_ID` is correct
+
+**Helper Script - Find Channel ID:**
+```bash
+# Automatically find your channel ID using your API key
+node scripts/get-youtube-channel-id.mjs YOUR_API_KEY
+```
+
+### EmailJS Testing
+
+**Test Contact Form Integration:**
+
+1. **Local Testing:**
+   ```bash
+   bun run dev
+   # Navigate to: http://localhost:4321/en/contact
+   # Fill and submit the contact form
+   ```
+
+2. **Environment Variables Check:**
+   ```bash
+   # Verify all EmailJS variables are set
+   cat .env | grep EMAILJS
+   ```
+
+**Expected Behavior:**
+- ✅ Form submits without errors
+- ✅ Success message displays  
+- ✅ Email arrives at `alesanchezpov@gmail.com`
+- ✅ BCC copy sent to `robertgomez.datascience@gmail.com`
+- ✅ Reply-To field set to sender's email
+
+### Build & Content Validation
+
+**Test Complete Build Process:**
+```bash
+# Verify all pages build successfully
+bun run build
+
+# Expected: "36 page(s) built" with no errors
+```
+
+**Test Event System:**
+```bash
+# Test event creation CLI
+bun run new-event
+
+# Test thumbnail generation
+bun run generate-thumbnails
+```
+
+**Content Collections Validation:**
+```bash
+# Check for schema errors in events, members, research, blog
+bun run build 2>&1 | grep -i error
+```
+
+### Thumbnail System Testing
+
+**Test Thumbnail Generation:**
+```bash
+# Generate thumbnails for all events
+node scripts/generate-thumbnail.mjs --all
+
+# Generate thumbnail for specific event
+node scripts/generate-thumbnail.mjs --title "Test Event" --date "2026-04-01" --type "in-person"
+```
+
+**Verify Thumbnails Load:**
+```bash
+# Check thumbnail files exist
+ls -la public/images/events/
+
+# Test thumbnail accessibility in dev server
+curl -I http://localhost:4321/images/events/gpu-programming-model.svg
+# Expected: HTTP/1.1 200 OK
+```
+
+### Page-Specific Tests
+
+**Test Events Page:**
+```bash
+# Visit events page and verify:
+# - Map loads correctly
+# - Events display in grid (max 3 each section)
+# - YouTube videos appear
+# - Event cards have thumbnails
+open http://localhost:4321/en/events
+```
+
+**Test Internationalization:**
+```bash
+# Verify both languages work
+open http://localhost:4321/en/events
+open http://localhost:4321/es/events
+```
+
+### Environment Variables Checklist
+
+**Required Variables Check:**
+```bash
+# Run this to verify all required env vars are set:
+echo "=== YouTube API ==="
+echo "API Key: ${PUBLIC_YOUTUBE_API_KEY:0:20}..."
+echo "Channel ID: ${PUBLIC_YOUTUBE_CHANNEL_ID}"
+echo ""
+echo "=== EmailJS ==="  
+echo "Public Key: ${PUBLIC_EMAILJS_PUBLIC_KEY:0:15}..."
+echo "Service ID: ${PUBLIC_EMAILJS_SERVICE_ID}"
+echo "Template ID: ${PUBLIC_EMAILJS_TEMPLATE_ID}"
+```
+
+**Production Deployment Test:**
+1. **Vercel Environment Variables:**
+   - Go to Vercel Project → Settings → Environment Variables
+   - Verify all `PUBLIC_*` variables match your local `.env`
+   - Redeploy: `vercel --prod`
+
+2. **Live Site Verification:**
+   ```bash
+   # Test production YouTube integration
+   curl -s "https://simg-website.vercel.app/en/events" | grep -o 'video-card'
+   
+   # Test contact form on live site
+   open https://simg-website.vercel.app/en/contact
+   ```
+
+### Development Workflow Testing
+
+**New Event Creation Flow:**
+1. Run `bun run new-event`
+2. Fill out event details
+3. Verify files created in `src/content/events/en/` and `src/content/events/es/`
+4. Check thumbnail generated in `public/images/events/`
+5. Run `bun run dev` and visit `/en/events`
+6. Confirm new event appears in grid
+
+**CI/CD Testing (GitHub Actions):**
+1. Go to GitHub → Actions → "Create Event"
+2. Run workflow with test data
+3. Verify PR is created with new event files
+4. Check that build passes in PR
+
+### Performance & Accessibility
+
+**Lighthouse Testing:**
+```bash
+# Install lighthouse CLI
+npm install -g lighthouse
+
+# Test key pages
+lighthouse http://localhost:4321/en/events --only-categories=performance,accessibility --chrome-flags="--headless"
+lighthouse http://localhost:4321/es/events --only-categories=performance,accessibility --chrome-flags="--headless"
+```
+
+**Expected Scores:**
+- Performance: >90
+- Accessibility: >95
+
+### Debugging Common Issues
+
+| Issue | Symptom | Solution |
+|-------|---------|----------|
+| **YouTube videos not loading** | "Loading videos..." persists | Check API key and channel ID in `.env` |
+| **Contact form fails** | Form submits but no email received | Verify EmailJS service ID and template ID |
+| **Thumbnails broken** | Gray/missing thumbnails | Run `node scripts/generate-thumbnail.mjs --all` |
+| **Build fails** | Astro build errors | Check content collection schema in `config.ts` |
+| **Events not appearing** | Empty events grid | Verify event status is "upcoming" or "completed" |
+| **Dark/light mode broken** | Theme doesn't persist | Check localStorage in browser devtools |
+
+### Quick Health Check Script
+
+Create a comprehensive test with one command:
+
+```bash
+# Add this to package.json scripts:
+"test": "node scripts/test-youtube.mjs && bun run build && echo '✅ All systems operational!'"
+
+# Run full health check:
+bun run test
+```
+
+---
 
 ### Design System
 
