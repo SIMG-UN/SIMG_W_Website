@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "new-event": "node scripts/create-event.mjs",
+    "generate-thumbnails": "node scripts/generate-thumbnail.mjs --all"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
