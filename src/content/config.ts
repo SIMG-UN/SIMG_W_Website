@@ -124,9 +124,57 @@ const researchCollection = defineCollection({
   })
 });
 
+// Esquema para eventos
+const eventsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
+    endDate: z.date().optional(),
+    time: z.string(), // e.g., "2:00 PM - 4:00 PM"
+    speaker: z.string(),
+    eventType: z.enum(['in-person', 'virtual', 'hybrid']),
+    // Location for in-person events
+    location: z.string().optional(),
+    building: z.string().optional(),
+    room: z.string().optional(),
+    // Virtual meeting details
+    meetingLink: z.string().url().optional(),
+    meetingPlatform: z.enum(['zoom', 'meet', 'teams', 'discord', 'other']).optional(),
+    // Google Calendar integration
+    googleCalendarLink: z.string().url().optional(),
+    recurrent: z.boolean().default(false),
+    recurrenceRule: z.string().optional(), // RRULE format e.g. "FREQ=WEEKLY;BYDAY=FR"
+    // Thumbnail/banner
+    thumbnail: z.string().optional(), // path to auto-generated or custom thumbnail
+    banner: z.string().optional(),
+    // Resources (slides, notebooks, recordings, etc.)
+    resources: z.array(z.object({
+      name: z.string(),
+      url: z.string().url(),
+      type: z.enum(['slides', 'notebook', 'code', 'recording', 'paper', 'other']).optional(),
+    })).optional(),
+    // YouTube recording link
+    recordingUrl: z.string().url().optional(),
+    // Tags
+    tags: z.array(z.string()).default([]),
+    // Event status
+    status: z.enum(['upcoming', 'live', 'completed', 'cancelled']).default('upcoming'),
+    // i18n
+    lang: z.enum(['en', 'es']),
+    translationKey: z.string(),
+    // Participants
+    participants: z.array(z.string()).optional(),
+    // Duration in readable format
+    duration: z.string().optional(),
+  })
+});
+
 // Exportar colecciones
 export const collections = {
   'members': membersCollection,
   'blog': blogCollection,
   'research': researchCollection,
+  'events': eventsCollection,
 };

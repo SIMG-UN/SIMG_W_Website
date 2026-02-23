@@ -4,15 +4,6 @@ const currentPath = Astro.url.pathname;
 const isSpanish = currentPath.startsWith("/es/");
 const currentLanguage = isSpanish ? "es" : "en";
 
-// Dropdown state for Resources menu
-let dropdownOpen = false;
-function toggleDropdown() {
-  dropdownOpen = !dropdownOpen;
-}
-function closeDropdown() {
-  dropdownOpen = false;
-}
-
 // Función para traducir la ruta entre idiomas
 function getAlternateUrl(path: string, targetLang: string): string {
   const isSpanishPath = path.startsWith("/es/");
@@ -96,37 +87,12 @@ function getAlternateUrl(path: string, targetLang: string): string {
       >
         {isSpanish ? "Contacto" : "Contact"}
       </a>
-
-      <!-- Menú desplegable Sesiones -->
-      <div class={"dropdown" + (dropdownOpen ? " open" : "")}
-        on:mouseenter={() => dropdownOpen = true}
-        on:mouseleave={closeDropdown}
+      <a
+        href={isSpanish ? "/es/events" : "/en/events"}
+        class={currentPath.includes("events") ? "active" : ""}
       >
-        <button class="dropbtn" on:click={toggleDropdown} aria-expanded={dropdownOpen} aria-haspopup="true">
-          {isSpanish ? "Recursos" : "Resources"}
-          <span class="dropdown-arrow" style={dropdownOpen ? 'transform: rotate(180deg);' : ''}>&#9662;</span>
-        </button>
-        <div class="dropdown-content" style={dropdownOpen ? 'display: block;' : ''}>
-          <a
-            href={isSpanish
-              ? "/es/sessions/in-person"
-              : "/en/sessions/in-person"}
-            >{isSpanish ? "Presencial" : "In Person"}</a
-          >
-          <a
-            href={isSpanish
-              ? "/es/sessions/recordings"
-              : "/en/sessions/recordings"}
-            >{isSpanish ? "Grabaciones" : "Recordings"}</a
-          >
-          <a
-            href={isSpanish
-              ? "/es/sessions/support-material"
-              : "/en/sessions/support-material"}
-            >{isSpanish ? "Material de apoyo" : "Support material"}</a
-          >
-        </div>
-      </div>
+        {isSpanish ? "Eventos" : "Events"}
+      </a>
 
       <!-- Botón de cambio de tema -->
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
@@ -250,55 +216,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
     z-index: 1001;
   }
 
-  /* Estilos para el menú desplegable Sesiones */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropbtn {
-    background-color: #F4C542;
-    color: #0C1A26;
-    padding: 8px 16px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .dropdown-arrow {
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-    margin-left: 3px;
-  }
-
-  .dropdown:hover .dropdown-arrow {
-    transform: rotate(180deg);
-  }
-
-  /* Change button color when dropdown is open */
-  .dropdown:hover .dropbtn {
-    background-color: #d4a935;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #23272f; /* Dark background for contrast */
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    border-radius: 4px;
-    overflow: hidden;
-    right: 0;
-    border: 1px solid #F4C542;
-  }
-
   .dropdown-content a {
     color: #fff;
     padding: 12px 16px;
@@ -314,11 +231,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
   .dropdown-content a:hover {
     background-color: #F4C542;
     color: #23272f;
-  }
-
-  .dropdown.open .dropdown-content,
-  .dropdown:hover .dropdown-content {
-    display: block;
   }
 
   .language-dropdown {
@@ -488,18 +400,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
     color: #F4C542 !important;
   }
 
-  /* Botón del dropdown en modo claro */
-  :global(html.light-mode) .dropbtn,
-  :global(body.light-mode) .dropbtn {
-    background-color: #F4C542 !important;
-    color: white !important;
-  }
-
-  :global(html.light-mode) .dropdown:hover .dropbtn,
-  :global(body.light-mode) .dropdown:hover .dropbtn {
-    background-color: #F4C542 !important;
-  }
-
   /* Tema toggle en modo claro */
   :global(html.light-mode) .theme-toggle,
   :global(body.light-mode) .theme-toggle {
@@ -660,27 +560,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
       color: #F4C542;
     }
 
-    .dropdown {
-      width: 100%;
-    }
-
-    .dropbtn {
-      width: 100%;
-      text-align: left;
-      justify-content: space-between;
-      margin: 0.5rem 0;
-      background-color: #F4C542;
-      color: white;
-    }
-
-    .dropdown-content {
-      position: static;
-      box-shadow: none;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      margin-bottom: 0.5rem;
-    }
-
     .dropdown-content a {
       padding: 0.75rem 1rem;
       color: rgba(255, 255, 255, 0.9);
@@ -751,11 +630,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
       color: #F4C542 !important;
     }
 
-    :global(html.light-mode) .dropdown-content,
-    :global(body.light-mode) .dropdown-content {
-      background: rgba(0, 0, 0, 0.05) !important;
-    }
-
     :global(html.light-mode) .dropdown-content a,
     :global(body.light-mode) .dropdown-content a {
       color: rgba(0, 0, 0, 0.8) !important;
@@ -817,7 +691,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
     const menuToggle = document.getElementById("menu-toggle");
     const mainNav = document.getElementById("main-nav");
     const body = document.body;
-    const dropdowns = document.querySelectorAll(".dropdown");
     const langButton = document.querySelector(".language-button");
     const langDropdown = document.querySelector(".language-dropdown-content");
     const themeToggle = document.getElementById("theme-toggle");
@@ -882,26 +755,6 @@ function getAlternateUrl(path: string, targetLang: string): string {
         });
       }
       // En desktop, el hover CSS se encarga automáticamente
-    }
-
-    // Manejador de eventos táctiles para el menú desplegable en móvil
-    if (window.innerWidth <= 768) {
-      // Para el menú desplegable
-      if (dropdowns) {
-        for (const dropdown of dropdowns) {
-          const dropButton = dropdown.querySelector(".dropdown-button");
-          const dropContent = dropdown.querySelector(".dropdown-content") as HTMLElement;
-          
-          if (dropButton && dropContent) {
-            dropButton.addEventListener("click", (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              dropContent.style.display =
-                dropContent.style.display === "block" ? "none" : "block";
-            });
-          }
-        }
-      }
     }
 
     // Cerrar el menú móvil cuando se hace clic fuera
