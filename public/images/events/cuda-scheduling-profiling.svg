@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="35%" style="stop-color:#0C1A26"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="nv-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#76B900"/>
+      <stop offset="100%" style="stop-color:#5a9e00"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F4C542"/>
+      <stop offset="100%" style="stop-color:#2E6DB4"/>
+    </linearGradient>
+    <linearGradient id="perf-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#76B900;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#76B900;stop-opacity:0.4"/>
+    </linearGradient>
+    <radialGradient id="glow-green" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#76B900;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#76B900;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glow-orange" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#76B900" stroke-width="0.3" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+
+  <!-- Ambient glows -->
+  <ellipse cx="1000" cy="300" rx="350" ry="280" fill="url(#glow-green)"/>
+  <ellipse cx="300" cy="500" rx="250" ry="200" fill="url(#glow-orange)"/>
+
+  <!-- Top accent bar -->
+  <rect x="0" y="0" width="1280" height="4" fill="url(#accent)"/>
+
+  <!-- Nsight Compute profiling visualization (right side) -->
+  <g transform="translate(780, 120)" opacity="0.6">
+    <!-- Profiler window -->
+    <rect x="0" y="0" width="420" height="450" rx="12" fill="rgba(0,0,0,0.5)" stroke="#76B900" stroke-width="1.5"/>
+    <!-- Title bar -->
+    <rect x="0" y="0" width="420" height="32" rx="12" fill="rgba(118,185,0,0.2)"/>
+    <rect x="0" y="15" width="420" height="17" fill="rgba(118,185,0,0.2)"/>
+    <circle cx="18" cy="16" r="5" fill="#ff5f56"/>
+    <circle cx="36" cy="16" r="5" fill="#ffbd2e"/>
+    <circle cx="54" cy="16" r="5" fill="#27c93f"/>
+    <text x="210" y="21" text-anchor="middle" fill="#76B900" font-family="monospace" font-size="11" font-weight="bold">NVIDIA Nsight Compute</text>
+
+    <!-- Metrics headers -->
+    <text x="15" y="58" fill="#76B900" font-family="monospace" font-size="11" font-weight="bold">GPU Speed Of Light Throughput</text>
+    <line x1="15" y1="65" x2="405" y2="65" stroke="#76B900" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Bar chart: SM Throughput -->
+    <text x="15" y="90" fill="#A8B3C3" font-family="monospace" font-size="10">SM Throughput</text>
+    <rect x="140" y="78" width="200" height="16" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="140" y="78" width="156" height="16" rx="3" fill="url(#nv-green)" opacity="0.7"/>
+    <text x="350" y="90" fill="#76B900" font-family="monospace" font-size="10" font-weight="bold">78.2%</text>
+
+    <!-- Bar chart: Memory Throughput -->
+    <text x="15" y="118" fill="#A8B3C3" font-family="monospace" font-size="10">Memory Throughput</text>
+    <rect x="140" y="106" width="200" height="16" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="140" y="106" width="130" height="16" rx="3" fill="#F4C542" opacity="0.6"/>
+    <text x="350" y="118" fill="#F4C542" font-family="monospace" font-size="10" font-weight="bold">65.1%</text>
+
+    <!-- Bar chart: Occupancy -->
+    <text x="15" y="146" fill="#A8B3C3" font-family="monospace" font-size="10">Occupancy</text>
+    <rect x="140" y="134" width="200" height="16" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    <rect x="140" y="134" width="184" height="16" rx="3" fill="#2E6DB4" opacity="0.7"/>
+    <text x="350" y="146" fill="#93c5fd" font-family="monospace" font-size="10" font-weight="bold">92.0%</text>
+
+    <!-- Warp Scheduling section -->
+    <text x="15" y="185" fill="#76B900" font-family="monospace" font-size="11" font-weight="bold">Warp Scheduler Statistics</text>
+    <line x1="15" y1="192" x2="405" y2="192" stroke="#76B900" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Warp state chart (simplified timeline) -->
+    <g transform="translate(15, 205)">
+      <!-- Timeline rows representing warps -->
+      <text x="0" y="10" fill="#A8B3C3" font-family="monospace" font-size="9">W0</text>
+      <text x="0" y="28" fill="#A8B3C3" font-family="monospace" font-size="9">W1</text>
+      <text x="0" y="46" fill="#A8B3C3" font-family="monospace" font-size="9">W2</text>
+      <text x="0" y="64" fill="#A8B3C3" font-family="monospace" font-size="9">W3</text>
+
+      <!-- Warp 0 timeline -->
+      <rect x="25" y="1" width="55" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="85" y="1" width="20" height="12" rx="2" fill="#ff6b35" opacity="0.6"/>
+      <rect x="110" y="1" width="70" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="185" y="1" width="15" height="12" rx="2" fill="#F4C542" opacity="0.6"/>
+      <rect x="205" y="1" width="80" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="290" y="1" width="40" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="335" y="1" width="50" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+
+      <!-- Warp 1 timeline -->
+      <rect x="25" y="19" width="30" height="12" rx="2" fill="#F4C542" opacity="0.6"/>
+      <rect x="60" y="19" width="65" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="130" y="19" width="25" height="12" rx="2" fill="#ff6b35" opacity="0.6"/>
+      <rect x="160" y="19" width="90" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="255" y="19" width="30" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="290" y="19" width="95" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+
+      <!-- Warp 2 timeline -->
+      <rect x="25" y="37" width="80" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="110" y="37" width="15" height="12" rx="2" fill="#F4C542" opacity="0.6"/>
+      <rect x="130" y="37" width="55" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="190" y="37" width="25" height="12" rx="2" fill="#ff6b35" opacity="0.6"/>
+      <rect x="220" y="37" width="70" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="295" y="37" width="90" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+
+      <!-- Warp 3 timeline -->
+      <rect x="25" y="55" width="45" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="75" y="55" width="20" height="12" rx="2" fill="#F4C542" opacity="0.6"/>
+      <rect x="100" y="55" width="85" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="190" y="55" width="50" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+      <rect x="245" y="55" width="15" height="12" rx="2" fill="#ff6b35" opacity="0.6"/>
+      <rect x="265" y="55" width="120" height="12" rx="2" fill="#76B900" opacity="0.8"/>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(15, 290)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#76B900" opacity="0.8"/>
+      <text x="14" y="9" fill="#A8B3C3" font-family="monospace" font-size="9">Active</text>
+      <rect x="60" y="0" width="10" height="10" rx="2" fill="#F4C542" opacity="0.6"/>
+      <text x="74" y="9" fill="#A8B3C3" font-family="monospace" font-size="9">Stalled</text>
+      <rect x="130" y="0" width="10" height="10" rx="2" fill="#ff6b35" opacity="0.6"/>
+      <text x="144" y="9" fill="#A8B3C3" font-family="monospace" font-size="9">Waiting</text>
+    </g>
+
+    <!-- Performance chart (bottom section) -->
+    <text x="15" y="330" fill="#76B900" font-family="monospace" font-size="11" font-weight="bold">Kernel Performance</text>
+    <line x1="15" y1="337" x2="405" y2="337" stroke="#76B900" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Simplified line chart -->
+    <g transform="translate(35, 345)">
+      <!-- Axes -->
+      <line x1="0" y1="80" x2="350" y2="80" stroke="#A8B3C3" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="0" x2="0" y2="80" stroke="#A8B3C3" stroke-width="0.5" opacity="0.3"/>
+      <!-- Performance line -->
+      <polyline points="0,70 35,55 70,60 105,40 140,45 175,25 210,30 245,15 280,18 315,8 350,5" fill="none" stroke="#76B900" stroke-width="2"/>
+      <!-- Dots -->
+      <circle cx="105" cy="40" r="3" fill="#76B900"/>
+      <circle cx="210" cy="30" r="3" fill="#F4C542"/>
+      <circle cx="350" cy="5" r="3" fill="#76B900"/>
+      <!-- Labels -->
+      <text x="175" y="95" text-anchor="middle" fill="#A8B3C3" font-family="monospace" font-size="8">Optimization Iterations →</text>
+      <text x="-10" y="45" fill="#A8B3C3" font-family="monospace" font-size="8" transform="rotate(-90, -10, 45)">Latency</text>
+    </g>
+  </g>
+
+  <!-- NVIDIA Logo (top-right) -->
+  <g transform="translate(1080, 35)">
+    <rect x="-8" y="-8" width="170" height="46" rx="8" fill="rgba(0,0,0,0.5)"/>
+    <g transform="scale(0.28)" fill="#76B900">
+      <path d="M61.3 18.5c-0.4 0-0.7 0-1.1 0.1V9.2C42.6 10.8 30.3 24.1 30.3 40c0 0.6 0 1.2 0.1 1.7l7.3-0.1c-0.1-0.5-0.1-1.1-0.1-1.6 0-11.7 8.5-21.4 19.7-23.3v8.6c-6.5 1.8-11.3 7.7-11.3 14.7 0 8.5 6.9 15.3 15.3 15.3 8.5 0 15.3-6.9 15.3-15.3 0-0.6 0-1.2-0.1-1.7h7.3c0.1 0.6 0.1 1.2 0.1 1.7 0 12.5-10.1 22.7-22.7 22.7S38.5 52.5 38.5 40c0-10.8 7.6-19.8 17.7-22v-8.6c-14.5 2.3-25.6 15-25.6 30.1 0 16.8 13.7 30.5 30.5 30.5S91.6 56.3 91.6 40c0-15.1-11-27.8-25.5-30.1v9.3c0.2 0 0.4 0 0.5 0 11.5 0 20.8 9.3 20.8 20.8S78.1 60.8 66.6 60.8 45.8 51.5 45.8 40c0-8.4 5-15.7 12.2-18.9v-8.8c-11.4 3.5-19.7 14.1-19.7 26.7 0 15.4 12.5 27.9 27.9 27.9S94.1 54.4 94.1 40c0-0.6 0-1.2-0.1-1.7h7.3c0.1 0.6 0.1 1.2 0.1 1.7 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-17.7 14.3-32 32-32 0.4 0 0.7 0 1.1 0v-0.1c-0.4 0-0.7 0-1.1 0z"/>
+    </g>
+    <text x="30" y="22" fill="#76B900" font-family="Arial, sans-serif" font-size="22" font-weight="bold" letter-spacing="2">NVIDIA</text>
+    <text x="30" y="32" fill="#76B900" font-family="Arial, sans-serif" font-size="8" letter-spacing="3" opacity="0.7">NSIGHT COMPUTE</text>
+  </g>
+
+  <!-- SIMG branding (top-left) -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" fill="#F4C542" font-family="Arial, sans-serif" font-size="24" font-weight="bold" letter-spacing="4">SIMG</text>
+    <text x="0" y="18" fill="#A8B3C3" font-family="Arial, sans-serif" font-size="10" letter-spacing="1">SEMILLERO DE INVESTIGACIÓN</text>
+  </g>
+
+  <!-- Lecture number badge -->
+  <g transform="translate(50, 110)">
+    <rect x="0" y="0" width="120" height="36" rx="18" fill="#76B900"/>
+    <text x="60" y="24" text-anchor="middle" fill="#0a0a0a" font-family="Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">LECTURE 3</text>
+  </g>
+
+  <!-- Event type badge -->
+  <g transform="translate(185, 110)">
+    <rect x="0" y="0" width="120" height="36" rx="18" fill="none" stroke="#2E6DB4" stroke-width="1.5"/>
+    <text x="60" y="24" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">IN-PERSON</text>
+  </g>
+
+  <!-- Main title -->
+  <text x="50" y="210" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="46" font-weight="bold">CUDA Scheduling</text>
+  <text x="50" y="268" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="46" font-weight="bold">&amp; Profiling Kernels</text>
+  <text x="50" y="326" fill="#76B900" font-family="Arial, sans-serif" font-size="44" font-weight="bold">with Nsight Compute</text>
+
+  <!-- Topics list -->
+  <g transform="translate(50, 380)" fill="#A8B3C3" font-family="Arial, sans-serif" font-size="16">
+    <circle cx="8" cy="-5" r="3" fill="#76B900"/>
+    <text x="20" y="0">Warp Scheduling &amp; Occupancy</text>
+    <circle cx="8" cy="25" r="3" fill="#ff6b35"/>
+    <text x="20" y="30">Performance Bottleneck Analysis</text>
+    <circle cx="8" cy="55" r="3" fill="#F4C542"/>
+    <text x="20" y="60">Memory Throughput Profiling</text>
+    <circle cx="8" cy="85" r="3" fill="#2E6DB4"/>
+    <text x="20" y="90">Kernel Optimization Techniques</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="680" width="1280" height="40" fill="rgba(0,0,0,0.6)"/>
+  <rect x="0" y="678" width="1280" height="2" fill="url(#accent)"/>
+
+  <!-- Date & location in bottom bar -->
+  <g font-family="Arial, sans-serif">
+    <text x="50" y="706" fill="#F4C542" font-size="15" font-weight="bold">Mar 13, 2026</text>
+    <text x="200" y="706" fill="#A8B3C3" font-size="14">|</text>
+    <text x="220" y="706" fill="#A8B3C3" font-size="14">2:00 – 4:00 PM</text>
+    <text x="380" y="706" fill="#A8B3C3" font-size="14">|</text>
+    <text x="400" y="706" fill="#A8B3C3" font-size="14">Building 404 – Yu Takeuchi, Room 202-405</text>
+  </g>
+
+  <!-- Turtle + UNAL (bottom-right) -->
+  <g transform="translate(1100, 688)">
+    <text x="0" y="18" fill="#E6E9EF" font-family="Arial, sans-serif" font-size="11" opacity="0.6">🐢 UNAL</text>
+  </g>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="716" width="1280" height="4" fill="url(#nv-green)"/>
+</svg>
