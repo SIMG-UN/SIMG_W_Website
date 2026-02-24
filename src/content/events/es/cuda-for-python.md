@@ -6,7 +6,7 @@ time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/tbd"
-meetingPlatform: "Google Meet"
+meetingPlatform: "meet"
 recurrent: false
 thumbnail: "/images/events/cuda-for-python.svg"
 tags: ["CUDA", "Python", "CuPy", "PyTorch", "Numba", "GPU"]

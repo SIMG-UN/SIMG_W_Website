@@ -6,7 +6,7 @@ time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/tbd"
-meetingPlatform: "Google Meet"
+meetingPlatform: "meet"
 recurrent: false
 thumbnail: "/images/events/gpu-programming-model.svg"
 tags: ["CUDA", "GPU", "Arquitectura", "Memoria", "HPC"]
