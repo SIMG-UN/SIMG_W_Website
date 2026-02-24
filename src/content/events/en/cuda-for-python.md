@@ -5,9 +5,8 @@ date: 2026-03-06
 time: "6:30 PM - 8:30 PM"
 speaker: "SIMG Research Group"
 eventType: "virtual"
-location: "Universidad Nacional de Colombia, Bogotá"
-building: "Building 404 - Yu Takeuchi"
-room: "202-405"
+meetingLink: "https://meet.google.com/tbd"
+meetingPlatform: "Google Meet"
 recurrent: false
 thumbnail: "/images/events/cuda-for-python.svg"
 tags: ["CUDA", "Python", "CuPy", "PyTorch", "Numba", "GPU"]

@@ -5,9 +5,8 @@ date: 2026-03-13
 time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
-location: "Universidad Nacional de Colombia, Bogotá"
-building: "Edificio 404 - Yu Takeuchi"
-room: "202-405"
+meetingLink: "https://meet.google.com/tbd"
+meetingPlatform: "Google Meet"
 recurrent: false
 thumbnail: "/images/events/cuda-scheduling-profiling.svg"
 tags: ["CUDA", "Nsight Compute", "Perfilado", "Planificación", "Optimización"]

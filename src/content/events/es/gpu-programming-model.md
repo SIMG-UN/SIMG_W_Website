@@ -5,9 +5,8 @@ date: 2026-02-27
 time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
-location: "Universidad Nacional de Colombia, Bogotá"
-building: "Edificio 404 - Yu Takeuchi"
-room: "202-405"
+meetingLink: "https://meet.google.com/tbd"
+meetingPlatform: "Google Meet"
 recurrent: false
 thumbnail: "/images/events/gpu-programming-model.svg"
 tags: ["CUDA", "GPU", "Arquitectura", "Memoria", "HPC"]
