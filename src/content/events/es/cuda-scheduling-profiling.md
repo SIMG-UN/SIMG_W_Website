@@ -2,9 +2,9 @@
 title: "Clase 3 - Planificación CUDA y Perfilado de Kernels con Nsight Compute"
 description: "Sesión avanzada sobre planificación de warps CUDA, optimización de ocupancia y perfilado de rendimiento. Aprende a usar NVIDIA Nsight Compute para identificar cuellos de botella, analizar el rendimiento de memoria y optimizar kernels para cargas de trabajo reales."
 date: 2026-03-13
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Edificio 404 - Yu Takeuchi"
 room: "202-405"

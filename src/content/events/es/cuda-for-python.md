@@ -2,9 +2,9 @@
 title: "Clase 2 - CUDA Para Python: CuPy, torch.cuda y cuda.jit (Numba)"
 description: "Sesión práctica explorando la computación acelerada por GPU desde Python. Aprende a usar CuPy como reemplazo directo de NumPy, aprovecha torch.cuda de PyTorch para operaciones con tensores en GPU, y escribe kernels CUDA personalizados directamente en Python usando el decorador cuda.jit de Numba."
 date: 2026-03-06
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Edificio 404 - Yu Takeuchi"
 room: "202-405"

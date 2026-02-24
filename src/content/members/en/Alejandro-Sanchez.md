@@ -12,15 +12,7 @@ lang: "en"
 translationKey: "Alejandro-Sanchez"
 ---
 
-El Dr. Juan Pérez es profesor de Ciencias de la Computación especializado en Aprendizaje Automático y Visión por Computador. Su investigación se centra en el desarrollo de nuevas arquitecturas de aprendizaje profundo para el análisis y comprensión de imágenes.
+Alejandro Sánchez Poveda is a research assistant at the Semillero de Investigación en Modelos Generativos (SIMG) at Universidad Nacional de Colombia. His work focuses on natural language processing and machine learning applied to music.
 
-## Intereses de Investigación
-- Aprendizaje Profundo para Visión por Computador
-- Modelos Generativos
-- Optimización de Redes Neuronales
-- Aprendizaje por Transferencia
-
-## Educación
-- Doctorado en Ciencias de la Computación, Universidad de Stanford
-- Maestría en Inteligencia Artificial, MIT
-- Ingeniería de Sistemas, Universidad Nacional de Colombia
+## Education
+- Computer Science, Universidad Nacional de Colombia

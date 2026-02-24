@@ -2,9 +2,9 @@
 title: "Lecture 2 - CUDA For Python: CuPy, torch.cuda & cuda.jit (Numba)"
 description: "Hands-on session exploring GPU-accelerated computing from Python. Learn how to use CuPy as a NumPy drop-in replacement, leverage PyTorch's torch.cuda for tensor operations on GPU, and write custom CUDA kernels directly in Python using Numba's cuda.jit decorator."
 date: 2026-03-06
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "SIMG Research Group"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Building 404 - Yu Takeuchi"
 room: "202-405"

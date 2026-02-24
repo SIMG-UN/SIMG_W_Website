@@ -2,9 +2,9 @@
 title: "Lecture 1 - GPU Programming Model, Architecture and Memory Layout"
 description: "An in-depth introduction to GPU programming fundamentals: the CUDA programming model, GPU hardware architecture (SMs, warps, threads), and memory hierarchy (global, shared, local, constant, texture). Learn how data flows between CPU and GPU and how to reason about kernel launches."
 date: 2026-02-27
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "SIMG Research Group"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Building 404 - Yu Takeuchi"
 room: "202-405"

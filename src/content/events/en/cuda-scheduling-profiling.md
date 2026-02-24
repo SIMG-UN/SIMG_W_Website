@@ -2,9 +2,9 @@
 title: "Lecture 3 - CUDA Scheduling and Profiling Kernels with Nsight Compute"
 description: "Advanced session on CUDA warp scheduling, occupancy optimization, and performance profiling. Learn to use NVIDIA Nsight Compute to identify bottlenecks, analyze memory throughput, and optimize kernel performance for real-world workloads."
 date: 2026-03-13
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "SIMG Research Group"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Building 404 - Yu Takeuchi"
 room: "202-405"

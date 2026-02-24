@@ -2,9 +2,9 @@
 title: "Clase 1 - Modelo de Programación GPU, Arquitectura y Distribución de Memoria"
 description: "Introducción profunda a los fundamentos de la programación GPU: el modelo de programación CUDA, la arquitectura del hardware GPU (SMs, warps, hilos), y la jerarquía de memoria (global, compartida, local, constante, textura). Aprende cómo fluyen los datos entre CPU y GPU y cómo razonar sobre el lanzamiento de kernels."
 date: 2026-02-27
-time: "2:00 PM - 4:00 PM"
+time: "6:30 PM - 8:30 PM"
 speaker: "Semillero SIMG"
-eventType: "in-person"
+eventType: "virtual"
 location: "Universidad Nacional de Colombia, Bogotá"
 building: "Edificio 404 - Yu Takeuchi"
 room: "202-405"
