@@ -48,6 +48,7 @@ const formattedDate = new Intl.DateTimeFormat(locale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+  timeZone: 'UTC',
 }).format(date);
 
 // Build Google Calendar link dynamically if not provided
@@ -86,9 +87,9 @@ function parseTime(str: string) {
 
 const calendarUrl = buildGoogleCalendarUrl();
 
-// Share URLs - extract filename without language prefix
+// Share URLs - extract filename without language prefix for anchor
 const eventSlug = event.id.replace(`${lang}/`, '').replace('.md', '');
-const eventUrl = `https://simg-seminar.com/${lang}/events/${eventSlug}`;
+const eventUrl = `https://simg-seminar.com/${lang}/events#${eventSlug}`;
 const shareText = isSpanish
   ? `🐢 Evento SIMG: "${title}" — ${formattedDate}. ¡Únete! ${eventUrl}`
   : `🐢 SIMG Event: "${title}" — ${formattedDate}. Join us! ${eventUrl}`;
@@ -113,7 +114,7 @@ const statusLabels: Record<string, Record<string, string>> = {
 const imgSrc = thumbnail || banner || '/images/website/SIMG_LOGO.jpg';
 ---
 
-<article class={`event-card ${status}`} id={event.slug}>
+<article class={`event-card ${status}`} id={eventSlug}>
   <!-- Thumbnail -->
   <div class="card-thumbnail">
     <img src={imgSrc} alt={title} loading="lazy" />
@@ -137,9 +138,7 @@ const imgSrc = thumbnail || banner || '/images/website/SIMG_LOGO.jpg';
       {formattedDate} · {time}
     </p>
 
-    <a href={`/${lang}/events/${eventSlug}`} class="card-title-link">
-      <h3 class="card-title">{title}</h3>
-    </a>
+    <h3 class="card-title">{title}</h3>
 
     <p class="card-speaker">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -335,21 +334,6 @@ const imgSrc = thumbnail || banner || '/images/website/SIMG_LOGO.jpg';
   }
   .card-date svg { flex-shrink: 0; color: #F4C542; }
 
-  .card-title-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform 0.2s ease;
-  }
-
-  .card-title-link:hover {
-    transform: translateX(4px);
-  }
-
-  .card-title-link:hover .card-title {
-    color: #F4C542;
-  }
-
   .card-title {
     font-size: 1.15rem;
     font-weight: 700;
@@ -360,7 +344,6 @@ const imgSrc = thumbnail || banner || '/images/website/SIMG_LOGO.jpg';
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    transition: color 0.2s ease;
   }
 
   .card-speaker, .card-location {

@@ -678,3 +678,30 @@ const pastEvents = sortedEvents.filter(e => e.data.status === "completed").slice
     .guidelines-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  // Smooth scroll to event when hash is present in URL
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      const eventId = window.location.hash.substring(1);
+      const eventElement = document.getElementById(eventId);
+      
+      if (eventElement) {
+        // Wait for page to fully render, then scroll
+        setTimeout(() => {
+          eventElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Add highlight effect
+          eventElement.style.animation = 'highlightEvent 2s ease-in-out';
+        }, 100);
+      }
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes highlightEvent {
+    0%, 100% { transform: scale(1); box-shadow: none; }
+    50% { transform: scale(1.02); box-shadow: 0 0 30px rgba(46, 109, 180, 0.4); }
+  }
+</style>
