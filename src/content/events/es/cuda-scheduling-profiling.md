@@ -2,11 +2,12 @@
 title: "Clase 3 - Planificación CUDA y Perfilado de Kernels con Nsight Compute"
 description: "Sesión avanzada sobre planificación de warps CUDA, optimización de ocupancia y perfilado de rendimiento. Aprende a usar NVIDIA Nsight Compute para identificar cuellos de botella, analizar el rendimiento de memoria y optimizar kernels para cargas de trabajo reales."
 date: 2026-03-13
-time: "6:30 PM - 8:30 PM"
+time: "6:30 PM - 9:00 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/tbd"
 meetingPlatform: "meet"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+3+-+CUDA+Scheduling+y+Profiling&dates=20260313T233000Z/20260314T020000Z&details=Sesi%C3%B3n+avanzada+sobre+optimizaci%C3%B3n+de+CUDA&location=https://meet.google.com/tbd&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/cuda-scheduling-profiling.svg"
 tags: ["CUDA", "Nsight Compute", "Perfilado", "Planificación", "Optimización"]
@@ -14,7 +15,7 @@ status: "upcoming"
 lang: "es"
 translationKey: "cuda-scheduling-profiling"
 participants: []
-duration: "1h 30m"
+duration: "2h 30m"
 ---
 
 ## Descripción General
