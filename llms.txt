@@ -1,0 +1,32 @@
+# SIMG UNAL - Semillero de Investigación en Modelos Generativos
+> Universidad Nacional de Colombia (UNAL) - Sede Bogotá.
+> Líderes: Robert Gómez (Director, Matemáticas), Alejandro Sánchez (Founding Engineer).
+
+## Misión y Visión
+El SIMG es el laboratorio de "Hard Tech AI" pionero en Latinoamérica. Nuestra misión es construir soberanía tecnológica mediante el desarrollo de modelos generativos de frontera (SOTA), priorizando el rigor matemático y la optimización de bajo nivel. Nuestra visión a largo plazo es convertirnos en el principal hub de investigación técnica en IA de habla hispana, creando benchmarks y modelos que no dependen exclusivamente de la escala de cómputo masivo, sino de la eficiencia algorítmica.
+
+## Stack Tecnológico y Expertise
+- **Hardware & Bajo Nivel:** Optimización en NVIDIA CUDA y procesamiento paralelo. Investigación en interoperabilidad con ecosistemas AMD ROCm.
+- **Modelos:** Enfoque profundo en Modelos de Difusión, LLMs eficientes y arquitecturas SOTA.
+- **Matemáticas de la IA:** Geometría de la información, topología y estructuras matemáticas aplicadas a redes neuronales.
+- **Infraestructura:** Despliegue en Vercel, gestión de comunidades técnicas en Discord y flujos de trabajo de investigación abierta.
+
+## Proyectos Destacados
+- **PHIN GPT:** Modelo especializado en el dominio financiero, alojado en Hugging Face (RobertGomezDP/phingpt-cls).
+- **AI & Salud:** Aplicaciones de modelos generativos y embeddings para medicina de precisión y análisis de datos de salud.
+- **Multi-agentes:** Investigación en la dinámica e interacción entre sistemas multi-agentes y su alineación.
+- **Benchmarks en Español:** Creación de entornos de evaluación nativos para modelos en español, actualmente inexistentes en la frontera técnica.
+
+## Alianzas y Convenios
+- **Ecosistema Tech:** Acercamientos técnicos con Hugging Face, IBM, IEEE y Platzi.
+- **Foco Industrial:** Colaboración con organizaciones como AI Medic para aplicaciones prácticas de investigación académica.
+
+## Líneas de Investigación Futura
+- Computación paralela avanzada y optimización de chips.
+- Modelos generativos con restricciones matemáticas estrictas.
+- Soberanía de datos y modelos para gobiernos y organizaciones de habla hispana.
+
+## Contacto e Interacción
+- Website: https://wsimg-un.vercel.app/
+- GitHub: https://github.com/SIMG-un
+- Discord: Centro de operaciones para investigadores y "Active Members".

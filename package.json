@@ -8,7 +8,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "new-event": "node scripts/create-event.mjs",
-    "generate-thumbnails": "node scripts/generate-thumbnail.mjs --all"
+    "generate-thumbnails": "node scripts/generate-thumbnail.mjs --all",
+    "test": "node scripts/test-youtube.mjs && bun run build && echo '✅ All systems operational!'",
+    "test-youtube": "node scripts/test-youtube.mjs",
+    "test-env": "echo '=== Environment Variables ===' && echo 'YouTube API Key:' ${PUBLIC_YOUTUBE_API_KEY:0:20}... && echo 'Channel ID:' ${PUBLIC_YOUTUBE_CHANNEL_ID} && echo 'EmailJS Key:' ${PUBLIC_EMAILJS_PUBLIC_KEY:0:15}..."
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
