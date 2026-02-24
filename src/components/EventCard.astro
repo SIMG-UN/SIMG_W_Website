@@ -89,7 +89,7 @@ const calendarUrl = buildGoogleCalendarUrl();
 
 // Share URLs - extract filename without language prefix for anchor
 const eventSlug = event.id.replace(`${lang}/`, '').replace('.md', '');
-const eventUrl = `https://simg-seminar.com/${lang}/events#${eventSlug}`;
+const eventUrl = `https://wsimg-un.vercel.app/${lang}/events#${eventSlug}`;
 const shareText = isSpanish
   ? `🐢 Evento SIMG: "${title}" — ${formattedDate}. ¡Únete! ${eventUrl}`
   : `🐢 SIMG Event: "${title}" — ${formattedDate}. Join us! ${eventUrl}`;
