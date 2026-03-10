@@ -7,7 +7,7 @@ speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/hkr-mzyv-uqa?pli=1&authuser=1"
 meetingPlatform: "meet"
-googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+3+-+CUDA+Scheduling+y+Profiling&dates=20260313T000000Z/20260313T020000Z&details=Sesi%C3%B3n+avanzada+sobre+optimizaci%C3%B3n+de+CUDA&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+3+-+CUDA+Scheduling+y+Profiling&dates=20260312T000000Z/20260312T020000Z&details=Sesi%C3%B3n+avanzada+sobre+optimizaci%C3%B3n+de+CUDA&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/cuda-scheduling-profiling.svg"
 tags: ["CUDA", "Nsight Compute", "Perfilado", "Planificación", "Optimización"]
