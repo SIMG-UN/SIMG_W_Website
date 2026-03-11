@@ -1,13 +1,13 @@
 ---
 title: "Clase 1 - Modelo de Programación GPU, Arquitectura y Distribución de Memoria"
 description: "Introducción profunda a los fundamentos de la programación GPU: el modelo de programación CUDA, la arquitectura del hardware GPU (SMs, warps, hilos), y la jerarquía de memoria (global, compartida, local, constante, textura). Aprende cómo fluyen los datos entre CPU y GPU y cómo razonar sobre el lanzamiento de kernels."
-date: 2026-02-27
+date: 2026-02-28
 time: "7:00 PM - 9:00 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/hkr-mzyv-uqa?pli=1&authuser=1"
 meetingPlatform: "meet"
-googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+1+-+Modelo+de+Programaci%C3%B3n+GPU&dates=20260228T000000Z/20260228T020000Z&details=Introducci%C3%B3n+profunda+a+los+fundamentos+de+la+programaci%C3%B3n+GPU&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+1+-+Modelo+de+Programaci%C3%B3n+GPU&dates=20260301T000000Z/20260301T020000Z&details=Introducci%C3%B3n+profunda+a+los+fundamentos+de+la+programaci%C3%B3n+GPU&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/gpu-programming-model.svg"
 tags: ["CUDA", "GPU", "Arquitectura", "Memoria", "HPC"]

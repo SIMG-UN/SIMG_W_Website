@@ -1,13 +1,13 @@
 ---
 title: "Clase 2 - CUDA Para Python: CuPy, torch.cuda y cuda.jit (Numba)"
 description: "Sesión práctica explorando la computación acelerada por GPU desde Python. Aprende a usar CuPy como reemplazo directo de NumPy, aprovecha torch.cuda de PyTorch para operaciones con tensores en GPU, y escribe kernels CUDA personalizados directamente en Python usando el decorador cuda.jit de Numba."
-date: 2026-03-06
+date: 2026-03-07
 time: "7:00 PM - 9:00 PM"
 speaker: "Semillero SIMG"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/hkr-mzyv-uqa?pli=1&authuser=1"
 meetingPlatform: "meet"
-googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+2+-+CUDA+Para+Python&dates=20260307T000000Z/20260307T020000Z&details=Sesi%C3%B3n+pr%C3%A1ctica+explorando+la+computaci%C3%B3n+acelerada+por+GPU+desde+Python&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase+2+-+CUDA+Para+Python&dates=20260308T000000Z/20260308T020000Z&details=Sesi%C3%B3n+pr%C3%A1ctica+explorando+la+computaci%C3%B3n+acelerada+por+GPU+desde+Python&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/cuda-for-python.svg"
 tags: ["CUDA", "Python", "CuPy", "PyTorch", "Numba", "GPU"]

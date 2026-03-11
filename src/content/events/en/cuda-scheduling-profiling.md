@@ -1,13 +1,13 @@
 ---
 title: "Lecture 3 - CUDA Scheduling and Profiling Kernels with Nsight Compute"
 description: "Advanced session on CUDA warp scheduling, occupancy optimization, and performance profiling. Learn to use NVIDIA Nsight Compute to identify bottlenecks, analyze memory throughput, and optimize kernel performance for real-world workloads."
-date: 2026-03-12
+date: 2026-03-13
 time: "7:00 PM - 9:00 PM"
 speaker: "SIMG Research Group"
 eventType: "virtual"
 meetingLink: "https://meet.google.com/hkr-mzyv-uqa?pli=1&authuser=1"
 meetingPlatform: "meet"
-googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lecture+3+-+CUDA+Scheduling+and+Profiling&dates=20260312T000000Z/20260312T020000Z&details=Advanced+session+on+CUDA+optimization+and+profiling&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lecture+3+-+CUDA+Scheduling+and+Profiling&dates=20260313T000000Z/20260313T020000Z&details=Advanced+session+on+CUDA+optimization+and+profiling&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/cuda-scheduling-profiling.svg"
 tags: ["CUDA", "Nsight Compute", "Profiling", "Scheduling", "Optimization"]
