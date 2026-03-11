@@ -5,9 +5,9 @@ date: 2026-02-27
 time: "7:00 PM - 9:00 PM"
 speaker: "SIMG Research Group"
 eventType: "virtual"
-meetingLink: "https://meet.google.com/tbd"
+meetingLink: "https://meet.google.com/hkr-mzyv-uqa?pli=1&authuser=1"
 meetingPlatform: "meet"
-googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lecture+1+-+GPU+Programming+Model&dates=20260228T000000Z/20260228T020000Z&details=In-depth+introduction+to+GPU+programming+fundamentals&location=https://meet.google.com/tbd&sf=true&output=xml"
+googleCalendarLink: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lecture+1+-+GPU+Programming+Model&dates=20260228T000000Z/20260228T020000Z&details=In-depth+introduction+to+GPU+programming+fundamentals&location=https://meet.google.com/hkr-mzyv-uqa&sf=true&output=xml"
 recurrent: false
 thumbnail: "/images/events/gpu-programming-model.svg"
 tags: ["CUDA", "GPU", "Architecture", "Memory Layout", "HPC"]
